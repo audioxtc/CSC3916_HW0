@@ -1,0 +1,57 @@
+# CSCI 3916 Web API
+# Jeremy Gage
+# Jan 31, 2021
+
+#Request Headers and associated responses
+
+User-Agent: PostmanRuntime/7.26.10
+Accept: */*
+Postman-Token: fcd80aa0-3531-42c5-9f98-630147479a40
+Host: www.googleapis.com
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+#Response Headers and descriptions
+Content-Type: application/json; charset=UTF-8
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+Content-Encoding: gzip
+Date: Sun, 31 Jan 2021 23:46:23 GMT
+Server: ESF
+Cache-Control: private
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Alt-Svc: h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+Transfer-Encoding: chunked
+
+Definitions:
+User Agent:The User-Agent request header is a characteristic string that lets servers and network peers identify the application, operating system, vendor, and/or version of the requesting user agent.
+In this case, it is Postman version 7.26.10
+Accept: The Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand. In this case the response is a wild card, indicating no preference.
+Host: The Host request header specifies the host and port number of the server to which the request is being sent. In this case it is google api.
+Accept-Encoding: The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand. Using content negotiation, the server selects one of the proposals, uses it and informs the client of its choice with the Content-Encoding response header.
+In this case, gzip is a compression-decompression decoding algorithm, deflate is a lossless data compression file format that uses a combination of LZSS and Huffman coding, and br is line break protocol.
+Connection: Specifies if the connection is to be keep-alive or close. Keep-alive means to keep the connection open, with some timeout parameters set forth if desired.
+Vary: The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.
+It is used by the server to indicate which headers it used when selecting a representation of a resource in a content negotiation algorithm.
+
+Content-type: The Content-Type entity header is used to indicate the media type of the resource. In responses, a Content-Type header tells the client what the content type of the returned content actually is. In this case, it is json with a character set of UTF-8.
+Vary: The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server. In contrast to the previous Accept-* headers, which are sent by the client, the Vary HTTP header is sent by the web server in its response. It indicates the list of headers used by the server during the server-driven content negotiation phase.
+The header is needed in order to inform the cache of the decision criteria so that it can reproduce it, allowing the cache to be functional while preventing serving erroneous content to the user.
+Content-encoding: gzip.  The server indicates it will use gzip compression.
+Date: date of request
+Server: The name of the software or product that handled the request. Usually in a format similar to User-Agent. In this case, ESF stands for "Everyware Software Framework", enterprise-ready IoT Edge Framework
+Cache-Control: The Cache-Control HTTP header holds directives (instructions) for caching in both requests and responses. A given directive in a request does not mean the same directive should be in the response.
+In this case, private means The response may be stored only by a browser's cache, even if the response is normally non-cacheable. If you mean to not store the response in any cache, use no-store instead. This directive is not effective in preventing caches from storing your response.
+X-XSS-Protection: Enables cross-site scripting filtering.Response 0 Disables XSS filtering.
+X-Frame-Options: The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
+SAMEORIGIN means you can still use the page in a frame as long as the site including it in a frame is the same as the one serving the page.
+X-Content-Type-Options: The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed and be followed. This is a way to opt out of MIME type sniffing, or, in other words, to say that the MIME types are deliberately configured.
+Alt-Svc:This HTTP response header is used to advertise alternative services through which the same resource can be reached. An alternative service is defined by a protocol/host/port combination.
+<protocol-id>=<alt-authority>; ma=<max-age>. In this case, h3-29=":443" means draft 29 of HTTP/3  = The quoted string specifying the alternative authority which consists of an optional host override, a colon, and a mandatory port number, in this case, 443.
+ma=<max-age>: The number of seconds for which the alternative service is considered fresh. If omitted, it defaults to 24 hours. Alternative service entries can be cached for up to <max-age> seconds, minus the age of the response (from the Age header). If the cached entry expires, the client can no longer use this alternative service for new connections. In this case, max age is 2,592,000 seconds.
+quic is Quick UDP Internet Connection, or QUIC,  is an experimental multiplexed transport protocol implemented on UDP.  It was developed by Google as a way to experiment with ways to improve TCP and web application delivery. As TCP is built into the kernel of many operating systems being able to experiment with changes, test them and implement modifications is an extremely slow process. The creation of QUIC allows developers to conduct experiments and try new things faster.
+
+Transfer-Encoding: This header specifies the form of encoding used to safely transfer the payload body to the user. In this case, "chunked" data is sent in a series of chunks. The Content-Length header is omitted in this case and at the beginning of each chunk you need to add the length of the current chunk in hexadecimal format, followed by '\r\n' and then the chunk itself, followed by another '\r\n'. The terminating chunk is a regular chunk, with the exception that its length is zero. It is followed by the trailer, which consists of a (possibly empty) sequence of entity header fields.
